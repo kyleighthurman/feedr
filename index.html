@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="js/x2js.min.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Title</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Feed Reader</a>
+            <ul class="right tabs">
+
+                <li class="tab col s3"><a class="active" href="#test1">Reddit</a></li>
+                <li class="tab col s3"><a href="#test2">Outside Online</a></li>
+                <li class="tab col s3"><a href="#test3">Aggregate</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    <div id="test1" class="col s12">
+
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+                <br>
+                <br>
+                <h1 class="header center orange-text">RSS Feeds</h1>
+                <div class="loader"></div>
+                <br>
+                <br>
+            </div>
+        </div>
+        <!-- <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Read More</a> -->
+
+        <div class="container">
+            <div id="redditFeedItems"></div>
+            <div class="section">
+
+            </div>
+            <br>
+            <br>
+
+            <div class="section">
+            </div>
+        </div>
+
+
+    </div>
+    <div id="test2" class="col s12">
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+                <br>
+                <br>
+                <h1 class="header center orange-text">RSS Feeds</h1>
+                <div class="loader"></div>
+                <br>
+                <br>
+            </div>
+        </div>
+        <!-- <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Read More</a> -->
+
+        <div class="container">
+            <div id="outsideOnlineFeedItems"></div>
+            <div class="section">
+
+            </div>
+            <br>
+            <br>
+
+            <div class="section">
+            </div>
+        </div>
+    </div>
+    <div id="test3" class="col s12">
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+                <br>
+                <br>
+                <h1 class="header center orange-text">RSS Feeds</h1>
+                <div class="loader"></div>
+                <br>
+                <br>
+            </div>
+        </div>
+        <!-- <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Read More</a> -->
+
+        <div class="container">
+            <div id="aggregateFeedItems"></div>
+            <div class="section">
+
+            </div>
+            <br>
+            <br>
+
+            <div class="section">
+            </div>
+        </div>
+    </div>
+
+
+    <!--  Footer-->
+    <!-- <footer class="page-footer orange">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Company Bio</h5>
+                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Settings</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Link 1</a></li>
+                        <li><a class="white-text" href="#!">Link 2</a></li>
+                        <li><a class="white-text" href="#!">Link 3</a></li>
+                        <li><a class="white-text" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Connect</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Link 1</a></li>
+                        <li><a class="white-text" href="#!">Link 2</a></li>
+                        <li><a class="white-text" href="#!">Link 3</a></li>
+                        <li><a class="white-text" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            </div>
+        </div>
+    </footer> -->
+
+    <!--  Scripts-->
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Templates -->
+    <script id="loadingTemplate" type="text/x-handlebars-template">
+        {{#if loading}}
+        <div class="spinner-container">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row center">
+            </div>
+            <div class="row center">
+            </div>
+        </div>
+        {{/if}}
+    </script>
+    <script id="feedTemplate" type="text/x-handlebars-template">
+
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-image">
+                        {{#if Picture}}
+                        <img src="{{Picture}}"> {{/if}}
+                        <!-- <span class="card-title">{{Title}}</span> -->
+                    </div>
+                    {{#if Reddit}}
+                    <div class="card-content blue lighten-5">
+                    {{else if Outside}}
+                    <div class="card-content blue darken-5">
+                    {{else}}
+                    <div class="card-content blue">
+                    {{/if}}
+                        <h5>{{Title}}</h5>
+                        <p>{{Author}} {{Description}}</p>
+                    </div>
+                    <div class="card-action">
+                        <a class="modal-trigger waves-effect waves-light btn" href="#{{Id}}">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Trigger -->
+        <!-- <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a> -->
+
+        <!-- Modal Structure -->
+        <div id="{{Id}}" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>{{Title}}</h4>
+                <p>{{Description}}</p>
+            </div>
+            <div class="modal-footer">
+                <a href="https://www.reddit.com{{Link}}" target="_blank" class="modal-action modal-close waves-effect waves-green btn-flat ">Read More</a>
+            </div>
+        </div>
+    </script>
+
+</body>
+
+</html>
